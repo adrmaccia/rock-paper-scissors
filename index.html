@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            // create array with selection of words
+            const array = ['Rock', 'Paper', 'Scissors'];
+            // randomize number based on array length, assign that as the array position   
+            const number = array[Math.floor(Math.random() * array.length)]
+            // set result to be case insensitive
+            return number.toLowerCase();
+        }
+
+        function playRound(playerSelection, computerSelection){
+            // set player input to be case insensitive
+            playerSelection = playerSelection.toLowerCase();
+  
+            if (playerSelection === "rock" && computerSelection === "scissors"){
+                return('You Win! Rock beats Scissors');
+            } else if (playerSelection === "scissors" && computerSelection === "paper"){
+                return('You Win! Scissors beats Paper');
+            } else if (playerSelection === "paper" && computerSelection === "rock"){
+                return('You Win! Paper beats Rock');
+            } else if (playerSelection === "scissors" && computerSelection === "rock"){
+                return('You Lose! Rock beats Paper');
+            } else if (playerSelection === "paper" && computerSelection === "scissors"){
+                return('You Lose! Scissors beats Paper');
+            } else if (playerSelection === "rock" && computerSelection === "paper"){
+                return('You Lose! Paper beats Rock');
+            } else {
+                return('That\'s a tie!');
+            }
+        }
+
+        function game(){
+
+            // set starting points and round number
+            let player = 0;
+            let computer = 0;
+            let counter = 0;
+
+
+            for(let i = counter; i < 5; i++){
+                // user selects starting hand
+                const playerSelection = prompt('Will you choose Rock, Paper or Scissors?');
+                // assign playRound to a variable to be reused
+                const round = playRound(playerSelection, getComputerChoice());
+                // output result of round
+                console.log(round);
+
+                // add to counter if win/lose
+                if(round.includes('You Win!')){
+                    ++player
+                } else if (round.includes('You Lose!')){
+                    ++computer
+                } 
+            }
+
+            // announce winner best of 5
+            if(player === 5){
+                console.log('You Win best out of 5!');
+            } else {
+                console.log('Uh oh, you lost!')
+            }
+        }      
+                  
+        game();
+        
+    </script>
+</body>
+</html>
+
