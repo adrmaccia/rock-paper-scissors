@@ -19,7 +19,8 @@
         function playRound(playerSelection, computerSelection){
             // set player input to be case insensitive
             playerSelection = playerSelection.toLowerCase();
-  
+            
+            // alternate between the possibilities of win/lose/draw 
             if (playerSelection === "rock" && computerSelection === "scissors"){
                 return('You Win! Rock beats Scissors');
             } else if (playerSelection === "scissors" && computerSelection === "paper"){
