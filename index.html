@@ -4,81 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 <body>
-    <div class="result"></div>
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
-    <div class="counter">
-        <p class="player"></p>
-        <p class="computer"></p>
-        <p class="round"></p>
+    <div class="container">
+        <div class="result"></div>
+        
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissors">Scissors</button>
+
+        <div class="counter">
+            <p class="player"></p>
+            <p class="computer"></p>
+            <p class="tie"></p>
+            <p class="finalResult"></p>
+            <button class="retry"></button>
+        </div>
     </div>
 
-    <script>
-        function getComputerChoice(){
-            const array = ['Rock', 'Paper', 'Scissors'];
-            // randomize number based on array length, assign that as the array position   
-            return array[Math.floor(Math.random() * array.length)]
-        }
-
-        function playRound(playerSelection, computerSelection){
-            round++;    
-            switch(true){
-                case (playerSelection === computerSelection):
-                    return (`That's a tie!`);
-                case (playerSelection === "Rock" && computerSelection === "Scissors"):
-                case (playerSelection === "Scissors" && computerSelection === "Paper"):
-                case (playerSelection === "Paper" && computerSelection === "Rock"):
-                    player++;
-                    return(`You win! ${playerSelection} beats ${computerSelection}.`);
-                default : computer++; 
-                    return(`You lose! ${computerSelection} beats ${playerSelection}.`);
-            }
-        }      
-
-        const rock = document.querySelector('.rock');
-        const paper = document.querySelector('.paper');
-        const scissors = document.querySelector('.scissors');
-        const result = document.querySelector('.result')
-        const counter = document.querySelector('.counter')
-        const playerPara = document.querySelector('.player');
-        const computerPara = document.querySelector('.computer');
-        const roundPara = document.querySelector('.round');
-
-        let player = 0;
-        let computer = 0;
-        let round = 0;
-
-        playerPara.textContent = `Your score : ${player}`;
-        computerPara.textContent = `Opponent score : ${computer}`;
-        roundPara.textContent = `Round : ${round}`;
-
-        function update(){
-            playerPara.textContent = `Your score : ${player}`;
-            computerPara.textContent = `Opponent score : ${computer}`;
-            roundPara.textContent = `Round : ${round}`;
-        }
-
-        rock.addEventListener('click', () => {
-            const results = playRound('Rock', getComputerChoice());
-            result.textContent = results;
-            update();
-        });
-
-        paper.addEventListener('click', () => {
-            const results = playRound('Paper', getComputerChoice());
-            result.textContent = results;
-            update();
-        });
-
-        scissors.addEventListener('click', () => {
-            const results = playRound('Scissors', getComputerChoice());
-            result.textContent = results;
-            update();
-        });        
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 
